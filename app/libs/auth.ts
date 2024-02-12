@@ -7,6 +7,9 @@ import FacebookProvider from "next-auth/providers/facebook";
 import sanityClient from "./sanity";
 
 export const authOptions: NextAuthOptions = {
+  pages: {
+    signIn: "/auth",
+  },
   providers: [
     FacebookProvider({
       clientId: process.env.FACEBOOK_CLIENT_ID as string,

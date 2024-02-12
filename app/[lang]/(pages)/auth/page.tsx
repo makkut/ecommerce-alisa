@@ -1,6 +1,7 @@
-import AlisaLogo from "@/components/AlisaLogo";
-import { AuthForm } from "@/components/AuthForm";
 import { AiFillGithub } from "react-icons/ai";
+import LocaleSwitcher from "../../components/LocaleSwitcher";
+import AlisaLogo from "../../components/AlisaLogo";
+import { AuthForm } from "../../components/AuthForm";
 
 const Auth = () => {
   return (
