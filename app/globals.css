@@ -66,5 +66,20 @@
   border: 0;
   box-sizing: border-box;
 }
-body {
+
+.swiper-pagination-bullet {
+  background-color: transparent !important;
+  width: 15px !important;
+  height: 15px !important;
+  opacity: 0.8 !important;
+  border-radius: 0 !important;
+  border: 2px solid hsl(262.1 83.3% 57.8%) !important;
+}
+.swiper-pagination-bullet-active {
+  background-color: hsl(262.1 83.3% 57.8%) !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: hsl(262.1 83.3% 57.8%) !important;
 }

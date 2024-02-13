@@ -1,4 +1,4 @@
-import { ImFacebook2, ImWhatsapp } from "react-icons/im";
+import { ImFacebook2, ImTelegram, ImWhatsapp } from "react-icons/im";
 import { GrInstagram } from "react-icons/gr";
 
 import AlisaLogo from "../AlisaLogo";
@@ -26,7 +26,7 @@ const Footer = () => {
           </a>
           <a href="https://wa.me">
             <span className="text-black hover:text-primary transition-colors duration-200 cursor-pointer">
-              <ImWhatsapp size={35} />
+              <ImTelegram size={36} />
             </span>
           </a>
         </div>
