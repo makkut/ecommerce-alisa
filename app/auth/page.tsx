@@ -7,7 +7,7 @@ const Auth = () => {
     <div className="flex h-[100vh] flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
-          <AlisaLogo />
+          <AlisaLogo size={150} />
         </div>
         <AuthForm />
       </div>
