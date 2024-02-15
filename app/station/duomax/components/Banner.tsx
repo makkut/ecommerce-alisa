@@ -46,7 +46,7 @@ const Banner = () => {
           className={cn(
             isDesktop
               ? "text-[2rem] pt-10 leading-[1.15]"
-              : "text-[1rem] sm:text-[1.5rem] md:text-[2rem] pt-8 leading-[1.25]"
+              : "text-[1rem] sm:text-[1.5rem] md:text-[2rem] pt-8 leading-[1.25] px-1"
           )}
         >
           И совершенно новый уровень взаимодействия <br />с виртуальным
