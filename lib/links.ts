@@ -21,6 +21,6 @@ export const links = [
   },
   {
     name: "Станция Дуо Макс",
-    link: "/",
+    link: "/station/duomax",
   },
 ];

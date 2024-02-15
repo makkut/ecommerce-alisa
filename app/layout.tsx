@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { NextAuthProvider } from "@/components/AuthProvider/AuthProvider";
 import Toast from "@/components/Toast/Toast";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +23,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <NextAuthProvider>
           <Toast />
-          <div className="min-h-[100vh] flex flex-col">{children}</div>
+          <div className="min-h-[100vh] flex flex-col">
+            <Header />
+            <main className="flex-auto ">{children}</main>
+            <Footer />
+          </div>
         </NextAuthProvider>
       </body>
     </html>

@@ -12,7 +12,9 @@ const MobileMenu = () => {
       </DrawerTrigger>
       <DrawerContent>
         <div className="flex justify-center mb-11">
-          <AlisaLogo size={50} color={true} />
+          <Link href="/" className="cursor-pointer">
+            <AlisaLogo size={50} color={true} />
+          </Link>
         </div>
         <nav className="flex justify-center">
           <ul className="text-center space-y-3">

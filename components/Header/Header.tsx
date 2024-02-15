@@ -18,7 +18,9 @@ const Header = () => {
   return (
     <header className="flex justify-between items-center py-2">
       <div className={cn(isDesktop ? "pl-10 mr-2" : "pl-5")}>
-        <AlisaLogo size={70} color={true} />
+        <Link href="/" className="cursor-pointer">
+          <AlisaLogo size={70} color={true} />
+        </Link>
       </div>
       {isDesktop && <DesktopMenu />}
       <div className={cn(isDesktop ? "pr-10" : "pr-5", "flex space-x-5")}>
