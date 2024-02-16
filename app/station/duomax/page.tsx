@@ -17,12 +17,18 @@ const DuoMaxPage = () => {
           <BlockWetter day="Вт" data="19 авг" degree="+21°" />
         </div>
       </Block>
-      <Block title="— Алиса, напомни  &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; забронировать билеты">
+      <Block title="— Алиса, напомни &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; забронировать билеты">
         <div className="mt-[30px] mx-10 pt-8 pb-10 rounded-t-2xl bg-[#181825] text-center">
           <p className="text-[#e6f7eb54] text-[13px]">
             Напоминаю, сегодня в 8:00
           </p>
           <p className="px-6 text-wrap">Забронировать билеты на самолёт</p>
+        </div>
+      </Block>
+      <Block title="— Алиса, поставь таймер &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; на 20 минут">
+        <div className="mt-[36px] text-center">
+          <p className="text-[#e6f7eb54] text-[12px]">Таймер</p>
+          <p className="px-6 text-wrap text-[36px]">19:35</p>
         </div>
       </Block>
       <Block title="— Алиса, давай поболтаем">

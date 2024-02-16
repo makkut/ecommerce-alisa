@@ -26,8 +26,8 @@ const BlockWetter: React.FC<BlockWetterProps> = ({ day, data, degree }) => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M15.4756 8.26956C16.3002 7.4058 17.463 6.86768 18.7515 6.86768C21.2525 6.86768 23.2799 8.89514 23.2799 11.3961C23.2799 12.6005 22.8098 13.695 22.0431 14.5062C21.4089 14.0696 20.6649 13.7811 19.8609 13.6907C19.642 11.1216 17.8632 8.99757 15.4756 8.26956H15.4756Z"
             fill="#E6F7EB"
           />
