@@ -12,7 +12,7 @@ import { useMediaQuery } from "@/app/hooks/use-media-query";
 import { cn } from "@/lib/utils";
 
 const Slider = () => {
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const isDesktop = useMediaQuery("(min-width: 1025px)");
   return (
     <Swiper
       navigation={true}

@@ -1,26 +1,30 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import React from "react";
 
 interface BlockWetterProps {
   day: string;
   data: string;
   degree: string;
+  icon?: string;
+  dataClass?: string;
 }
-const BlockWetter: React.FC<BlockWetterProps> = ({ day, data, degree }) => {
+const BlockWetter: React.FC<BlockWetterProps> = ({
+  day,
+  data,
+  degree,
+  icon,
+  dataClass,
+}) => {
   return (
     <div className="text-center">
       <p>{day}</p>
-      <p
-        className="text-[#e6f7eb54] text-[13px] 
-"
-      >
-        {data}
-      </p>
+      <p className={cn("text-[#e6f7eb54] text-[13px]", dataClass)}>{data}</p>
       <div className="flex space-x-1">
         <svg
-          width="28"
-          height="28"
+          width={icon ? icon : "28"}
+          height={icon ? icon : "28"}
           viewBox="0 0 28 28"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

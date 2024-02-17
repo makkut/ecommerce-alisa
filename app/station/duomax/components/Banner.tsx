@@ -10,7 +10,7 @@ import YandexLogo from "@/components/YandexLogo";
 const robotoCondensed = Roboto_Condensed({ subsets: ["cyrillic"] });
 
 const Banner = () => {
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const isDesktop = useMediaQuery("(min-width: 1025px)");
   return (
     <div className="relative">
       <div
@@ -54,7 +54,7 @@ const Banner = () => {
         </p>
       </div>
       <Image
-        alt={`carousel`}
+        alt={`banner`}
         width={3880}
         height={isDesktop ? 700 : 1346}
         style={{

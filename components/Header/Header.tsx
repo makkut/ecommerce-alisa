@@ -12,7 +12,7 @@ import DesktopMenu from "../DesktopMenu/DesktopMenu";
 import { cn } from "@/lib/utils";
 
 const Header = () => {
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const isDesktop = useMediaQuery("(min-width: 1025px)");
   const router = useRouter();
   console.log("router", router);
   return (

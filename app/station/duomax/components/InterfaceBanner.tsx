@@ -6,7 +6,7 @@ import { useMediaQuery } from "@/app/hooks/use-media-query";
 import { cn } from "@/lib/utils";
 
 const InterfaceBanner = () => {
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const isDesktop = useMediaQuery("(min-width: 1025px)");
   return (
     <div className="relative bg-black">
       <h2
