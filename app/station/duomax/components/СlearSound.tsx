@@ -80,7 +80,7 @@ const ClearSound = () => {
           classN="h-[910px]"
         >
           <div className="relative">
-            {/* <div className="absolute w-[800px] h-[500px] left-[177px] right-[-417px] top-[-75px] bottom-[-222px] filter blur-[270px] bg-[linear-gradient(0.00deg,_rgba(14,_17,_21,_0.3)_0.26%,rgba(167,_129,_255,_0.3)_12.315%,rgba(74,_38,_255,_0.3)_45.373%,rgba(74,_38,_255,_0)_94.587%]" /> */}
+            <div className="absolute w-[800px] h-[500px] top-[-75px] bottom-[-222px] filter blur-[270px] bg-[linear-gradient(0.00deg,_rgba(14,_17,_21,_0.3)_0.26%,rgba(167,_129,_255,_0.3)_12.315%,rgba(74,_38,_255,_0.3)_45.373%,rgba(74,_38,_255,_0)_94.587%)]" />
             <div className="absolute pt-64 z-30">
               <div className="px-5">
                 <h3 className="text-[18px]">Динамики мощностью 60 Вт</h3>
