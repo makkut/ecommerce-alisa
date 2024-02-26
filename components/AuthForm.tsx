@@ -1,8 +1,10 @@
 "use client";
 
+import axios from "axios";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { BsGithub, BsGoogle, BsFacebook } from "react-icons/bs";
+import { BsGithub, BsGoogle } from "react-icons/bs";
 import { z } from "zod";
 import { useCallback, useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
@@ -20,6 +22,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { generateVerificationToken } from "@/lib/token";
 
 type Variant = "LOGIN" | "REGISTER";
 
@@ -71,10 +74,7 @@ export function AuthForm() {
       variant === "REGISTER"
         ? zodResolver(formSchema)
         : zodResolver(formSchema2),
-    defaultValues:
-      variant === "REGISTER"
-        ? { email: "", name: "", password: "" }
-        : { email: "", password: "" },
+    defaultValues: { email: "", name: "", password: "" },
   });
 
   const onSubmit = async (data: AuthFormValues) => {
@@ -85,6 +85,7 @@ export function AuthForm() {
         if (user) {
           toast.success("Succes");
         }
+        await generateVerificationToken(user);
       } catch (error) {
         toast.error("Error");
       } finally {
@@ -98,6 +99,7 @@ export function AuthForm() {
         email,
         password,
       });
+      console.log("login", login);
       if (login?.ok === true) {
         router.push("/");
       } else {
