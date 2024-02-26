@@ -15,7 +15,10 @@ const NewVerification = () => {
   const [loader, setLoader] = useState<boolean>(false);
 
   const searchParams = useSearchParams();
-  const token = searchParams.get("token");
+  if (!searchParams) {
+    return;
+  }
+  const token = searchParams?.get("token");
 
   const onSubmit = () => {
     setLoader(true);
