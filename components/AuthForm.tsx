@@ -1,7 +1,5 @@
 "use client";
 
-import axios from "axios";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { BsGithub, BsGoogle } from "react-icons/bs";
@@ -23,10 +21,16 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { generateVerificationToken } from "@/lib/token";
+import { FormSuccess } from "./FormSuccess/FromSuccess";
+import { FormError } from "./FormErorr/FormErorr";
+import Link from "next/link";
+import { LoginSchema, RegisterSchema } from "@/schemas-form";
 
 type Variant = "LOGIN" | "REGISTER";
 
 export function AuthForm() {
+  const [error, setError] = useState<string | undefined>();
+  const [success, setSuccess] = useState<string | undefined>();
   const [variant, setVariant] = useState<Variant>("LOGIN");
   const [isLoading, setIsLoading] = useState(false);
   const { data: session } = useSession();
@@ -38,28 +42,8 @@ export function AuthForm() {
     }
   }, [session, router]);
 
-  const formSchema = z.object({
-    email: z.string().min(2, {
-      message: "Email must be at least 2 characters.",
-    }),
-    name: z.string().min(2, {
-      message: "Username must be at least 2 characters.",
-    }),
-    password: z.string().min(2, {
-      message: "Password must be at least 2 characters.",
-    }),
-  });
-
-  const formSchema2 = z.object({
-    email: z.string().min(2, {
-      message: "Email must be at least 2 characters.",
-    }),
-    password: z.string().min(2, {
-      message: "Password must be at least 2 characters.",
-    }),
-  });
-
-  type AuthFormValues = z.infer<typeof formSchema>;
+  type AuthFormValues = z.infer<typeof LoginSchema>;
+  type AuthFormValues2 = z.infer<typeof RegisterSchema>;
 
   const toogleVariant = useCallback(() => {
     if (variant === "LOGIN") {
@@ -69,11 +53,11 @@ export function AuthForm() {
     }
   }, [variant]);
 
-  const form = useForm<AuthFormValues>({
+  const form = useForm<AuthFormValues | AuthFormValues2>({
     resolver:
       variant === "REGISTER"
-        ? zodResolver(formSchema)
-        : zodResolver(formSchema2),
+        ? zodResolver(RegisterSchema)
+        : zodResolver(LoginSchema),
     defaultValues: { email: "", name: "", password: "" },
   });
 
@@ -83,10 +67,12 @@ export function AuthForm() {
       try {
         const user = await signUp(data);
         if (user) {
+          setSuccess("Succes");
           toast.success("Succes");
         }
         await generateVerificationToken(user);
       } catch (error) {
+        setError("Error");
         toast.error("Error");
       } finally {
         setIsLoading(false);
@@ -103,6 +89,7 @@ export function AuthForm() {
       if (login?.ok === true) {
         router.push("/");
       } else {
+        setSuccess(login?.error!);
         toast.error(login?.error!);
       }
       setIsLoading(false);
@@ -114,9 +101,11 @@ export function AuthForm() {
     signIn(action, { redirect: false })
       .then((callback) => {
         if (callback?.error) {
+          setError("Invalid Credentials");
           toast.error("Invalid Credentials");
         }
         if (callback?.ok && !callback?.error) {
+          setSuccess("Logged in!");
           toast.success("Logged in!");
         }
       })
@@ -181,6 +170,19 @@ export function AuthForm() {
             </FormItem>
           )}
         />
+        {/* <FormSuccess message={success} />
+        {!success && <FormError message={error} />} */}
+
+        {variant === "LOGIN" && (
+          <div className="pt-5">
+            <Link
+              href="/auth/reset"
+              className="text-sm hover:text-primary ease-out duration-300 cursor-pointer"
+            >
+              Forgot password?
+            </Link>
+          </div>
+        )}
         <Button className="w-full" type="submit">
           {variant === "LOGIN" ? "Sign in" : "Register"}
         </Button>

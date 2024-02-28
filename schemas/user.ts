@@ -31,7 +31,7 @@ const user = {
     defineField({
       name: "password",
       type: "string",
-      hidden: true,
+      //   hidden: true,
     }),
     defineField({
       name: "email",
