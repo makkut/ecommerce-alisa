@@ -23,4 +23,8 @@ export const links = [
     name: "Станция Дуо Макс",
     link: "/station/duomax",
   },
+  {
+    name: "Магазин",
+    link: "/shop",
+  },
 ];
