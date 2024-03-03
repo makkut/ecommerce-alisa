@@ -1,11 +1,14 @@
 import CardWrapper from "@/components/CardWrapper";
 import NewPasswordForm from "./components/NewPasswordForm";
+import { Suspense } from "react";
 
 const NewPasswordPage = () => {
   return (
-    <CardWrapper>
-      <NewPasswordForm />;
-    </CardWrapper>
+    <Suspense>
+      <CardWrapper>
+        <NewPasswordForm />;
+      </CardWrapper>
+    </Suspense>
   );
 };
 

@@ -2,7 +2,8 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { BsGithub, BsGoogle } from "react-icons/bs";
+import { BsGithub, BsGoogle, BsFacebook } from "react-icons/bs";
+import { FaYandex } from "react-icons/fa";
 import { z } from "zod";
 import { useCallback, useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
@@ -214,6 +215,24 @@ export function AuthForm() {
             className="inline-flex w-full"
           >
             <BsGoogle size={20} />
+          </Button>
+        </div>
+        <div className="mt-2 flex gap-2">
+          <Button
+            size="icon"
+            variant="secondary"
+            onClick={() => socialAction("yandex")}
+            className="inline-flex w-full"
+          >
+            <FaYandex size={20} />
+          </Button>
+          <Button
+            size="icon"
+            variant="secondary"
+            onClick={() => socialAction("facebook")}
+            className="inline-flex w-full"
+          >
+            <BsFacebook size={20} />
           </Button>
         </div>
         <div className="flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500">

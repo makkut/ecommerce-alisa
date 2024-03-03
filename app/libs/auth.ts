@@ -3,7 +3,7 @@ import { SanityAdapter, SanityCredentials } from "next-auth-sanity";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
-import EmailProvider from "next-auth/providers/email";
+import YandexProvider from "next-auth/providers/yandex";
 
 import sanityClient from "./sanity";
 import { getUserById } from "@/data/user";
@@ -21,6 +21,10 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    }),
+    YandexProvider({
+      clientId: process.env.YANDEX_CLIENT_ID as string,
+      clientSecret: process.env.YANDEX_CLIENT_SECRET as string,
     }),
     SanityCredentials(sanityClient),
   ],
