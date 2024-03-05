@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { NextAuthProvider } from "@/components/AuthProvider/AuthProvider";
+import ModalProvider from "@/providers/modal-provider";
 import Toast from "@/components/Toast/Toast";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NextAuthProvider>
+          <ModalProvider />
           <Toast />
           <div className="min-h-[100vh] flex flex-col">
             <Header />

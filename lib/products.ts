@@ -9,7 +9,29 @@ export const urlFor = (source: any) => {
 };
 
 export const productQuery = groq`*[_type == 'product']{
-  ...
+ _id,
+  title,
+  description,
+  images,
+  category[]-> {
+    _id,
+    title,
+    description
+  },
+  color[]-> {
+    _id,
+    title,
+    description
+  },
+  price,
+  rowprice,
+  ratings,
+  isnew,
+  body,
+  bodyshort,
+  position,
+  brand,
+  quantity
 } | order(_createdAt desc)`;
 
 export const products = async () => {
