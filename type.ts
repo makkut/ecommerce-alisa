@@ -1,3 +1,25 @@
+export interface Image {
+  _key: string;
+  _ref: string;
+  _type: string;
+}
+
+export interface Color {
+  _key: string;
+  _ref: string;
+  _type: string;
+  title: string;
+  description: string;
+}
+
+export interface Category {
+  _key: string;
+  _ref: string;
+  _type: string;
+  title: string;
+  description: string;
+}
+
 export interface ProductProps {
   _id: string;
   _type: string;
@@ -14,21 +36,11 @@ export interface ProductProps {
     current: string;
     _type: string;
   };
-  images: [
-    {
-      _key: string;
-      _ref: string;
-      _type: string;
-    }
-  ];
-  category: [
-    {
-      _key: string;
-      _ref: string;
-      _type: string;
-    }
-  ];
+  images: Image[];
+  color: Color[];
+  category: Category[];
   isnew: boolean;
+  bodyshort: any;
   body: any;
   quantity: number;
 }

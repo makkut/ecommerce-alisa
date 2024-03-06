@@ -86,6 +86,11 @@ const product = {
       type: "blockContent",
     }),
     defineField({
+      name: "bodyshort",
+      title: "Body short",
+      type: "blockContent",
+    }),
+    defineField({
       name: "position",
       title: "Position",
       type: "string",
