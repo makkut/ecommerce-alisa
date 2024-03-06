@@ -1,23 +1,20 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { LuUser2, LuUserCheck2, LuShoppingBag } from "react-icons/lu";
 
+import { useMediaQuery } from "@/app/hooks/use-media-query";
+import { cn } from "@/lib/utils";
 import AlisaLogo from "../AlisaLogo";
 import MobileMenu from "../MobileMenu/MobileMenu";
-import { useMediaQuery } from "@/app/hooks/use-media-query";
 import DesktopMenu from "../DesktopMenu/DesktopMenu";
-import { cn } from "@/lib/utils";
 import { signOut, useSession } from "next-auth/react";
 import { Button } from "../ui/button";
+import NavbarActions from "../ui/navbar-actions";
 
 const Header = () => {
   const { data } = useSession();
-  console.log("session", data);
   const isDesktop = useMediaQuery("(min-width: 1025px)");
-  const router = useRouter();
-  console.log("router", router);
   return (
     <header className="flex justify-between items-center py-2">
       <div className={cn(isDesktop ? "pl-10 mr-2" : "pl-5")}>
@@ -42,11 +39,7 @@ const Header = () => {
             />
           </Link>
         )}
-
-        <LuShoppingBag
-          size={30}
-          className="hover:text-primary ease-out duration-300 cursor-pointer"
-        />
+        <NavbarActions />
       </div>
     </header>
   );

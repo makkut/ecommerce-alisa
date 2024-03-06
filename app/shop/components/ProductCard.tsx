@@ -5,15 +5,12 @@ import { useRouter } from "next/navigation";
 import { MouseEventHandler } from "react";
 import { Expand, ShoppingCart } from "lucide-react";
 
-// import { Product } from "@/types";
 import IconButton from "@/components/ui/icon-button";
 import { urlFor } from "@/lib/products";
 import Currency from "@/components/ui/currency";
 import { ProductProps } from "@/type";
 import usePreviewModal from "@/app/hooks/use-preview-modal";
-// import Currency from "@/components/ui/currency";
-// import usePreviewModal from "@/hooks/use-preview-modal";
-// import useCart from "@/hooks/use-cart";
+import useCart from "@/app/hooks/use-cart";
 
 interface Props {
   data: ProductProps;
@@ -21,7 +18,7 @@ interface Props {
 
 const ProductCard = ({ data }: Props) => {
   console.log("product", data);
-  //   const cart = useCart();
+  const cart = useCart();
   const previewModal = usePreviewModal();
   const router = useRouter();
   const handleClick = () => {
@@ -35,7 +32,7 @@ const ProductCard = ({ data }: Props) => {
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
-    // cart.addItem(data);
+    cart.addItem(data);
   };
   return (
     <div
