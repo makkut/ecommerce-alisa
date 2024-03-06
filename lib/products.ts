@@ -8,7 +8,7 @@ export const urlFor = (source: any) => {
   return builder.image(source);
 };
 
-export const productQuery = groq`*[_type == 'product']{
+export const getProducts = groq`*[_type == 'product']{
  _id,
   title,
   description,
@@ -35,6 +35,39 @@ export const productQuery = groq`*[_type == 'product']{
 } | order(_createdAt desc)`;
 
 export const products = async () => {
-  const productData = await sanityClient.fetch(productQuery);
+  const productsData = await sanityClient.fetch(getProducts);
+  return productsData;
+};
+
+export const getProductByIdQuery = groq`*[_type == 'product' && _id == $productId][0]{
+  _id,
+  title,
+  description,
+  images,
+  category[]-> {
+    _id,
+    title,
+    description
+  },
+  color[]-> {
+    _id,
+    title,
+    description
+  },
+  price,
+  rowprice,
+  ratings,
+  isnew,
+  body,
+  bodyshort,
+  position,
+  brand,
+  quantity
+}`;
+
+export const product = async (id: string) => {
+  const productData = await sanityClient.fetch(getProductByIdQuery, {
+    productId: id,
+  });
   return productData;
 };
