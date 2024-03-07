@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { LuUser2, LuUserCheck2, LuShoppingBag } from "react-icons/lu";
+import Image from "next/image";
 
 import { useMediaQuery } from "@/app/hooks/use-media-query";
 import { cn } from "@/lib/utils";
-import AlisaLogo from "../AlisaLogo";
+// import AlisaLogo from "../AlisaLogo";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import DesktopMenu from "../DesktopMenu/DesktopMenu";
 import { signOut, useSession } from "next-auth/react";
@@ -18,9 +19,20 @@ const Header = () => {
   return (
     <header className="flex justify-between items-center py-2">
       <div className={cn(isDesktop ? "pl-10 mr-2" : "pl-5")}>
-        <Link href="/" className="cursor-pointer">
+        {/* <Link href="/" className="cursor-pointer">
           <AlisaLogo size={70} color={true} />
-        </Link>
+        </Link> */}
+        <Image
+          height={70}
+          width={70}
+          style={{
+            objectFit: "cover",
+            backgroundAttachment: "fixed",
+          }}
+          src={"/images/logoYa.svg"}
+          alt=""
+          className="object-cover object-center"
+        />
       </div>
       {isDesktop && <DesktopMenu />}
       <div className={cn(isDesktop ? "pr-10" : "pr-5", "flex space-x-5")}>

@@ -1,7 +1,8 @@
 import { ImFacebook2, ImTelegram, ImWhatsapp } from "react-icons/im";
 import { GrInstagram } from "react-icons/gr";
+import Image from "next/image";
 
-import AlisaLogo from "../AlisaLogo";
+// import AlisaLogo from "../AlisaLogo";
 
 const Footer = () => {
   return (
@@ -11,7 +12,18 @@ const Footer = () => {
           © 2024 Alisa
         </div>
         <div className="flex flex-auto justify-center items-center py-7">
-          <AlisaLogo size={60} />
+          {/* <AlisaLogo size={60} /> */}
+          <Image
+            height={60}
+            width={60}
+            style={{
+              objectFit: "cover",
+              backgroundAttachment: "fixed",
+            }}
+            src={"/images/logoYab.svg"}
+            alt=""
+            className="object-cover object-center"
+          />
         </div>
         <div className="w-[200px] flex justify-around items-center my-0 mx-auto">
           <a href="https://www.facebook.com">
