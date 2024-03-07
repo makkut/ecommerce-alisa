@@ -17,12 +17,16 @@ interface Props {
 }
 
 const ProductCard = ({ data }: Props) => {
-  console.log("product", data);
   const cart = useCart();
   const previewModal = usePreviewModal();
   const router = useRouter();
+
+  const productInCart = cart?.items?.find(
+    (element) => element._id === data._id
+  );
+
   const handleClick = () => {
-    // router.push(`/product/${data?.id}`);
+    router.push(`/product/${data?._id}`);
   };
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -54,6 +58,9 @@ const ProductCard = ({ data }: Props) => {
             />
             <IconButton
               onClick={onAddToCart}
+              disabled={
+                productInCart && productInCart?.quantity >= data.quantity
+              }
               icon={<ShoppingCart size={20} className="text-gray-600" />}
             />
           </div>
