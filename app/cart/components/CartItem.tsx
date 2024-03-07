@@ -8,7 +8,7 @@ import IconButton from "@/components/ui/icon-button";
 import { X, Plus, Minus } from "lucide-react";
 import Currency from "@/components/ui/currency";
 import useCart from "@/app/hooks/use-cart";
-import { product, urlFor } from "@/lib/products";
+import { getProduct, urlFor } from "@/lib/products";
 
 interface CartItemProps {
   data: ProductProps;
@@ -21,7 +21,7 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data2 = await product(data._id);
+        const data2 = await getProduct(data._id);
         setProductData(data2);
       } catch (error) {
         console.error("Error fetching product data:", error);
@@ -71,8 +71,8 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
                 onClick={() => removeItem(data._id)}
                 icon={<Minus size={15} />}
               />
-              <div className="w-20 text-center">
-                Max: {productData.quantity}
+              <div className="w-24 text-end">
+                Max: {productData.quantity} шт.
               </div>
             </div>
             <Currency value={data.price} />

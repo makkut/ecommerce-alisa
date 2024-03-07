@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import { BsGridFill } from "react-icons/bs";
 import { ImList } from "react-icons/im";
 
-import { products } from "@/lib/products";
 import { ProductProps } from "@/type";
 import Container from "./Container";
 import ListProduct from "./ListProduct";
 import ShowListGrid from "./ShowListGrid";
 import Product from "./Product";
 import ProductCard from "./ProductCard";
+import { getProducts } from "@/lib/products";
 
 const Shop = () => {
   const [show, setShow] = useState({
@@ -31,7 +31,7 @@ const Shop = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await products();
+        const data = await getProducts();
         setProductData(data);
       } catch (error) {
         console.error("Error fetching product data:", error);
