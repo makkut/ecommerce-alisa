@@ -29,9 +29,7 @@ export const newVerification = async (token: string) => {
 
   await sanityClient
     .delete(existingToken._id)
-    .then(() => {
-      console.log("Token deleted");
-    })
+    .then(() => {})
     .catch((err) => {
       console.error("Delete failed: ", err.message);
     });

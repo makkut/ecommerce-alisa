@@ -26,10 +26,18 @@ export const getUserById = async (id: string) => {
   try {
     const user = await sanityClient.fetch(
       `*[_type == "user" && _id == $id][0] {
-           name,
+            _id,
+            name,
             isAdmin,
             email,
-            emailVerified
+            emailVerified,
+            firstname,
+            lastname,
+            zip,
+            city,
+            street,
+            house,
+            country
         }`,
       { id: id }
     );
