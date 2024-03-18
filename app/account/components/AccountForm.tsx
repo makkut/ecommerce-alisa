@@ -20,13 +20,30 @@ import { useState, useTransition } from "react";
 import { updateUser } from "@/actions/update-user";
 import { FormError } from "@/components/FormErorr/FormErorr";
 import { FormSuccess } from "@/components/FormSuccess/FromSuccess";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 type AccountFormValues = z.infer<typeof AccountSchema>;
 
 interface AccountFormProps {
   user?: User;
 }
+
+export interface UpdateUser {
+  values: AccountFormValues;
+  user: User | undefined;
+}
 const AccountForm = ({ user }: AccountFormProps) => {
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation({
+    mutationFn: async (body: UpdateUser) => await updateUser(body),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+      setSuccess("Выполненно успешно!");
+    },
+    onError: () => {
+      setError("Ошибка!");
+    },
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
@@ -36,7 +53,7 @@ const AccountForm = ({ user }: AccountFormProps) => {
   const form = useForm<AccountFormValues>({
     resolver: zodResolver(AccountSchema),
     defaultValues: {
-      firstname: user ? user.firstname : "22",
+      firstname: user ? user.firstname : "",
       lastname: user ? user.lastname : "",
       zip: user ? user.zip : "",
       street: user ? user.street : "",
@@ -51,43 +68,9 @@ const AccountForm = ({ user }: AccountFormProps) => {
     setError("");
     setSuccess("");
     startTransition(() => {
-      updateUser(values, user).then((data) => {
-        setError(data?.error);
-        setSuccess(data?.success);
-        setIsLoading(false);
-      });
+      mutate({ values, user });
+      setIsLoading(false);
     });
-    // if (variant === "REGISTER") {
-    //   try {
-    //     const user = await signUp(data);
-    //     if (user) {
-    //       setSuccess("Succes");
-    //       toast.success("Succes");
-    //     }
-    //     await generateVerificationToken(user);
-    //   } catch (error) {
-    //     setError("Error");
-    //     toast.error("Error");
-    //   } finally {
-    //     setIsLoading(false);
-    //   }
-    // }
-    // if (variant === "LOGIN") {
-    //   const { email, password } = data;
-    //   const login = await signIn("sanity-login", {
-    //     redirect: false,
-    //     email,
-    //     password,
-    //   });
-    //   console.log("login", login);
-    //   if (login?.ok === true) {
-    //     router.push("/");
-    //   } else {
-    //     setSuccess(login?.error!);
-    //     toast.error(login?.error!);
-    //   }
-    //   setIsLoading(false);
-    // }
   };
   return (
     <Form {...form}>

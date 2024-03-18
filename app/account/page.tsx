@@ -1,6 +1,7 @@
 import Container from "@/components/ui/container";
 import Summary from "../cart/components/Summary";
 import AcoountDetails from "./components/AcoountDetails";
+import AccountWrap from "./components/AccountWrap";
 
 const AccountPage = () => {
   return (
@@ -18,7 +19,7 @@ const AccountPage = () => {
               ))}
             </ul> */}
           </div>
-          <AcoountDetails />
+          <AccountWrap />
         </div>
       </div>
     </Container>

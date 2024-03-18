@@ -88,7 +88,7 @@ export const authOptions: NextAuthOptions = {
         ...session,
         user: {
           ...session.user,
-          id: userIdObj._id,
+          _id: userIdObj._id,
           firstname: userIdObj.firstname,
           lastname: userIdObj.lastname,
           street: userIdObj.street,

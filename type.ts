@@ -28,7 +28,7 @@ export interface User {
   house?: string;
   city?: string;
   country?: string;
-  id?: string;
+  _id?: string;
   name?: string | null | undefined;
   email?: string | null | undefined;
   image?: string | null | undefined;
