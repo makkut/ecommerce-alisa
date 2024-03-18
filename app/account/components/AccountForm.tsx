@@ -67,10 +67,12 @@ const AccountForm = ({ user }: AccountFormProps) => {
     setIsLoading(true);
     setError("");
     setSuccess("");
-    startTransition(() => {
-      mutate({ values, user });
-      setIsLoading(false);
-    });
+    mutate({ values, user });
+    setIsLoading(false);
+    // startTransition(() => {
+    //   mutate({ values, user });
+    //   setIsLoading(false);
+    // });
   };
   return (
     <Form {...form}>
