@@ -11,12 +11,15 @@ import Currency from "@/components/ui/currency";
 import { ProductProps } from "@/type";
 import usePreviewModal from "@/app/hooks/use-preview-modal";
 import useCart from "@/app/hooks/use-cart";
+import { useMediaQuery } from "@/app/hooks/use-media-query";
+import { cn } from "@/lib/utils";
 
 interface Props {
   data: ProductProps;
 }
 
 const ProductCard = ({ data }: Props) => {
+  const isDesktop = useMediaQuery("(min-width: 1025px)");
   const cart = useCart();
   const previewModal = usePreviewModal();
   const router = useRouter();
@@ -50,7 +53,13 @@ const ProductCard = ({ data }: Props) => {
           alt="Image"
           className="aspect-square object-cover rounded-md"
         />
-        <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
+        <div
+          className={cn(
+            isDesktop
+              ? "opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5"
+              : "absolute w-full px-6 bottom-5"
+          )}
+        >
           <div className="flex gap-x-6 justify-center">
             <IconButton
               onClick={onPreview}

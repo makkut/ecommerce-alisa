@@ -33,3 +33,13 @@ export const RegisterSchema = z.object({
     message: "Username is required",
   }),
 });
+
+export const AccountSchema = z.object({
+  firstname: z.optional(z.string()),
+  lastname: z.optional(z.string()),
+  street: z.optional(z.string()),
+  house: z.optional(z.string()),
+  city: z.optional(z.string()),
+  country: z.optional(z.string()),
+  zip: z.optional(z.string()),
+});

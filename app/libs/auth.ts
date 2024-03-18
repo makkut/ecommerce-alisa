@@ -58,19 +58,44 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     session: async ({ session, token }) => {
-      //   console.log("sessionToken", token);
+      console.log("session", session);
+      console.log("token", token);
       const userEmail = token.email;
-      const userIdObj = await sanityClient.fetch<{ _id: string }>(
-        `*[_type == "user" && email == $email][0] {
-            _id
-        }`,
-        { email: userEmail }
+      const userId = token.sub;
+      const userIdObj = await sanityClient.fetch<{
+        _id: string;
+        firstname: string;
+        lastname: string;
+        street: string;
+        zip: string;
+        house: string;
+        city: string;
+        country: string;
+      }>(
+        `*[_type == "user" && email == $email && _id == $id][0] {
+            _id,
+            firstname,
+            lastname,
+            street,
+            zip,
+            house,
+            city,
+            country
+            }`,
+        { email: userEmail, id: userId }
       );
       return {
         ...session,
         user: {
           ...session.user,
-          id: userIdObj._id,
+          _id: userIdObj._id,
+          firstname: userIdObj.firstname,
+          lastname: userIdObj.lastname,
+          street: userIdObj.street,
+          zip: userIdObj.zip,
+          house: userIdObj.house,
+          city: userIdObj.city,
+          country: userIdObj.country,
         },
       };
     },

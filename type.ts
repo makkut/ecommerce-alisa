@@ -20,6 +20,20 @@ export interface Category {
   description: string;
 }
 
+export interface User {
+  firstname?: string;
+  lastname?: string;
+  zip?: string;
+  street?: string;
+  house?: string;
+  city?: string;
+  country?: string;
+  _id?: string;
+  name?: string | null | undefined;
+  email?: string | null | undefined;
+  image?: string | null | undefined;
+}
+
 export interface ProductProps {
   _id: string;
   _type: string;

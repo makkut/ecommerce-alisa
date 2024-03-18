@@ -1,3 +1,5 @@
+"use server";
+
 import sanityClient from "@/app/libs/sanity";
 
 export const getUserByEmail = async (email: string) => {
@@ -22,14 +24,22 @@ export const getUserByEmail = async (email: string) => {
 };
 
 export const getUserById = async (id: string) => {
-  console.log("id", id);
+  console.log("getUserById", id);
   try {
     const user = await sanityClient.fetch(
       `*[_type == "user" && _id == $id][0] {
-           name,
+            _id,
+            name,
             isAdmin,
             email,
-            emailVerified
+            emailVerified,
+            firstname,
+            lastname,
+            zip,
+            city,
+            street,
+            house,
+            country
         }`,
       { id: id }
     );

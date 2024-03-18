@@ -6,6 +6,7 @@ import ModalProvider from "@/providers/modal-provider";
 import Toast from "@/components/Toast/Toast";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import TanStackProvider from "@/providers/tanstack-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,13 +24,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NextAuthProvider>
-          <ModalProvider />
-          <Toast />
-          <div className="min-h-[100vh] flex flex-col">
-            <Header />
-            <main className="flex-auto ">{children}</main>
-            <Footer />
-          </div>
+          <TanStackProvider>
+            <ModalProvider />
+            <Toast />
+            <div className="min-h-[100vh] flex flex-col">
+              <Header />
+              <main className="flex-auto ">{children}</main>
+              <Footer />
+            </div>
+          </TanStackProvider>
         </NextAuthProvider>
       </body>
     </html>

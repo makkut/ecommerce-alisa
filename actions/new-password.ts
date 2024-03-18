@@ -25,7 +25,7 @@ export const newPassword = async (
   const { password } = validatedFields.data;
 
   const existingToken = await getPasswordResetTokenByToken(token);
-  console.log("existingToken", existingToken);
+
   if (!existingToken) {
     return { error: "Invalid token!" };
   }
@@ -51,9 +51,7 @@ export const newPassword = async (
 
   await sanityClient
     .delete(existingToken._id)
-    .then(() => {
-      console.log("Token deleted");
-    })
+    .then(() => {})
     .catch((err) => {
       console.error("Delete failed: ", err.message);
     });
