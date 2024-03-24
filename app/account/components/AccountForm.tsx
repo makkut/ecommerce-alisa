@@ -34,7 +34,7 @@ export interface UpdateUser {
 }
 const AccountForm = ({ user }: AccountFormProps) => {
   const queryClient = useQueryClient();
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: async (body: UpdateUser) => await updateUser(body),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["user"] });
@@ -44,10 +44,8 @@ const AccountForm = ({ user }: AccountFormProps) => {
       setError("Ошибка!");
     },
   });
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
-  const [isPending, startTransition] = useTransition();
 
   console.log("user", user);
   const form = useForm<AccountFormValues>({
@@ -64,15 +62,9 @@ const AccountForm = ({ user }: AccountFormProps) => {
   });
 
   const onSubmit = async (values: AccountFormValues) => {
-    setIsLoading(true);
     setError("");
     setSuccess("");
     mutate({ values, user });
-    setIsLoading(false);
-    // startTransition(() => {
-    //   mutate({ values, user });
-    //   setIsLoading(false);
-    // });
   };
   return (
     <Form {...form}>
@@ -89,7 +81,7 @@ const AccountForm = ({ user }: AccountFormProps) => {
                     placeholder="имя"
                     {...field}
                     type="text"
-                    disabled={isLoading}
+                    disabled={isPending}
                   />
                 </FormControl>
                 <FormMessage />
@@ -107,7 +99,7 @@ const AccountForm = ({ user }: AccountFormProps) => {
                     placeholder="фамилия"
                     {...field}
                     type="text"
-                    disabled={isLoading}
+                    disabled={isPending}
                   />
                 </FormControl>
                 <FormMessage />
@@ -127,7 +119,7 @@ const AccountForm = ({ user }: AccountFormProps) => {
                     placeholder="улица"
                     {...field}
                     type="text"
-                    disabled={isLoading}
+                    disabled={isPending}
                   />
                 </FormControl>
                 <FormMessage />
@@ -145,7 +137,7 @@ const AccountForm = ({ user }: AccountFormProps) => {
                     placeholder="дом"
                     {...field}
                     type="text"
-                    disabled={isLoading}
+                    disabled={isPending}
                   />
                 </FormControl>
                 <FormMessage />
@@ -165,7 +157,7 @@ const AccountForm = ({ user }: AccountFormProps) => {
                     placeholder="индекс"
                     {...field}
                     type="text"
-                    disabled={isLoading}
+                    disabled={isPending}
                   />
                 </FormControl>
                 <FormMessage />
@@ -183,7 +175,7 @@ const AccountForm = ({ user }: AccountFormProps) => {
                     placeholder="населенный пункт"
                     {...field}
                     type="text"
-                    disabled={isLoading}
+                    disabled={isPending}
                   />
                 </FormControl>
                 <FormMessage />
@@ -202,7 +194,7 @@ const AccountForm = ({ user }: AccountFormProps) => {
                   placeholder="страна"
                   {...field}
                   type="text"
-                  disabled={isLoading}
+                  disabled={isPending}
                 />
               </FormControl>
               <FormMessage />

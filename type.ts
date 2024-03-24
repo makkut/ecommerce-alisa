@@ -4,21 +4,21 @@ export interface Image {
   _type: string;
 }
 
-export interface Color {
-  _key: string;
-  _ref: string;
-  _type: string;
-  title: string;
-  description: string;
-}
+// export interface Color {
+//   _key: string;
+//   _ref: string;
+//   _type: string;
+//   title: string;
+//   description: string;
+// }
 
-export interface Category {
-  _key: string;
-  _ref: string;
-  _type: string;
-  title: string;
-  description: string;
-}
+// export interface Category {
+//   _key: string;
+//   _ref: string;
+//   _type: string;
+//   title: string;
+//   description: string;
+// }
 
 export interface User {
   firstname?: string;
@@ -63,4 +63,16 @@ export interface StateProps {
   orebi: {
     productData: ProductProps[];
   };
+}
+
+export interface Category {
+  _id: string;
+  title: string;
+  description: string;
+}
+
+export interface Color {
+  _id: string;
+  title: string;
+  description: string;
 }
