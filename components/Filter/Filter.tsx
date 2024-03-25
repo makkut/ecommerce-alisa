@@ -3,12 +3,12 @@
 import qs from "query-string";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { Category } from "@/type";
+import { Category, Color } from "@/type";
 import { cn } from "@/lib/utils";
 import Button from "../ui/Button/Button";
 
 interface FilterProps {
-  data: Category[];
+  data: Category[] | Color[];
   name: string;
   valueKey: string;
 }

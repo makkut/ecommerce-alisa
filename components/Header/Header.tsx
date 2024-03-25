@@ -16,23 +16,25 @@ const Header = () => {
   return (
     <header className="flex justify-between items-center py-2">
       <div className={cn("lg:pl-10 lg:mr-2", "pl-5")}>
-        <Image
-          height={70}
-          width={70}
-          style={{
-            objectFit: "cover",
-            backgroundAttachment: "fixed",
-          }}
-          src={"/images/logoYa.svg"}
-          alt=""
-          className="object-cover object-center"
-        />
+        <Link href="/">
+          <Image
+            height={70}
+            width={70}
+            style={{
+              objectFit: "cover",
+              backgroundAttachment: "fixed",
+            }}
+            src={"/images/logoYa.svg"}
+            alt=""
+            className="object-cover object-center"
+          />
+        </Link>
       </div>
       <div className="lg:block hidden">
         <DesktopMenu />
       </div>
       <div className={cn("lg:pr-10", "pr-5", "flex space-x-5")}>
-        <div className="lg:hidden block">
+        <div className="lg:hidden flex">
           <MobileMenu />
         </div>
         {data ? (
