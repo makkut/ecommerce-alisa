@@ -31,11 +31,11 @@ const useCart = create(
           };
 
           set({ items: updatedItems });
-          toast.success("Item quantity updated in the cart.");
+          toast.success("Обновление корзины");
         } else {
           // Otherwise, add a new item to the cart
           set({ items: [...currentItems, { ...data, quantity: 1 }] });
-          toast.success("Item added to the cart.");
+          toast.success("Товар добавлен в корзину");
         }
       },
       removeItem: (id: string) => {
@@ -55,12 +55,12 @@ const useCart = create(
           }
 
           set({ items: updatedItems });
-          toast.success("Item quantity updated in the cart.");
+          toast.success("Обновление корзины");
         }
       },
       removeItemAll: (id: string) => {
         set({ items: [...get().items.filter((item) => item._id !== id)] });
-        toast.success("Item removed from the cart.");
+        toast.success("Товар удален из корзины");
       },
       removeAll: () => set({ items: [] }),
     }),

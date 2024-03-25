@@ -120,10 +120,10 @@ export function AuthForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Эл. почта</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="email"
+                  placeholder="эл. почта"
                   {...field}
                   type="email"
                   disabled={isLoading}
@@ -139,10 +139,10 @@ export function AuthForm() {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel>Имя пользователя</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="username"
+                    placeholder="имя пользователя"
                     {...field}
                     type="text"
                     disabled={isLoading}
@@ -158,10 +158,10 @@ export function AuthForm() {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>Пароль</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="password"
+                  placeholder="пароль"
                   {...field}
                   type="password"
                   disabled={isLoading}
@@ -180,12 +180,12 @@ export function AuthForm() {
               href="/auth/reset"
               className="text-sm hover:text-primary ease-out duration-300 cursor-pointer"
             >
-              Forgot password?
+              Забыли пароль?
             </Link>
           </div>
         )}
         <Button className="w-full" type="submit">
-          {variant === "LOGIN" ? "Sign in" : "Register"}
+          {variant === "LOGIN" ? "Войти" : "Регистрация"}
         </Button>
       </form>
       <div className="mt-6">
@@ -195,7 +195,7 @@ export function AuthForm() {
           </div>
           <div className="relative flex justify-center text-sm">
             <span className="bg-white px-2 text-gray-500">
-              Or continue with
+              Или продолжить с
             </span>
           </div>
         </div>
@@ -238,11 +238,11 @@ export function AuthForm() {
         <div className="flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500">
           <div>
             {variant === "LOGIN"
-              ? "New to Messanger?"
-              : "Already have an account?"}
+              ? "Новый пользователь?"
+              : "У вас уже есть аккаунт?"}
           </div>
           <div onClick={toogleVariant} className="underline cursor-pointer">
-            {variant === "LOGIN" ? "Create an acoount" : "Login"}
+            {variant === "LOGIN" ? "Создать аккаунт" : "Войти"}
           </div>
         </div>
       </div>

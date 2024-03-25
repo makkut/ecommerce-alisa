@@ -52,7 +52,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
           onClick={onAddToCart}
           disabled={productInCart && productInCart.quantity >= data.quantity}
         >
-          Add To Cart
+          В корзину
           <ShoppingCart />
         </Button>
         <p>Max: {data.quantity} шт.</p>

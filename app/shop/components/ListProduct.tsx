@@ -75,7 +75,7 @@ const ListProduct = ({ product, bg }: Props) => {
             <span className="text-sm mb-1">
               <AiOutlineShopping />
             </span>{" "}
-            Add to bag
+            В корзину
           </button>
           <Link
             href={{

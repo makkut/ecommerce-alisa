@@ -43,7 +43,7 @@ const Product = ({ product, bg }: Props) => {
               <span>
                 <AiOutlineShopping />
               </span>
-              Add to bag
+              В корзину
             </button>
             <Link
               href={`/product/${product?.slug?.current}`}

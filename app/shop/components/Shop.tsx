@@ -12,6 +12,7 @@ import MobileFilter from "@/components/Filter/MobileFilters";
 import { useProducts } from "@/app/hooks/use-product";
 import { useColors } from "@/app/hooks/use-color";
 import { useCategory } from "@/app/hooks/use-category";
+import Loading from "@/app/loading";
 
 const Shop = () => {
   const searchParams = useSearchParams();
@@ -42,7 +43,9 @@ const Shop = () => {
       <div className="px-4 sm:px-6 lg:px-8 pb-24">
         <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
           {isLoadingCategory || isLoadingColor ? (
-            <>LOADING!!!</>
+            <>
+              <Loading />
+            </>
           ) : (
             dataCategory &&
             dataColor && (
@@ -52,7 +55,9 @@ const Shop = () => {
 
           <div className="hidden lg:block">
             {isLoadingCategory || isLoadingColor ? (
-              <>LOADING!!!</>
+              <>
+                <Loading />
+              </>
             ) : (
               <>
                 {dataCategory && (
@@ -79,7 +84,9 @@ const Shop = () => {
           </div>
           <div className="mt-6 lg:col-span-4 lg:mt-0">
             {isLoadingProducts ? (
-              <>LOADING!!!</>
+              <>
+                <Loading />
+              </>
             ) : (
               <>
                 {dataProduct.length === 0 && <NoResults />}
