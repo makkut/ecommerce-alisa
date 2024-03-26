@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 function useUser(id: string) {
   return useQuery({
-    queryKey: ["user"],
+    queryKey: ["user", id],
     queryFn: async () => await getUserById(id).then(),
   });
 }
